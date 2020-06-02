@@ -1,0 +1,25 @@
+{
+	"name": "laragrad/eloquent-model-userstamps",
+	"keywords": [
+		"laravel",
+		"eloquent",
+		"userstamps"
+	],
+	"type": "package",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Ilya Khondozhko",
+			"email": "dev@laragrad.com"
+		}
+	],
+	"require": {
+		"php": "^7.2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Laragrad\\" : "src"
+		}
+	},
+	"minimum-stability": "dev"
+}
