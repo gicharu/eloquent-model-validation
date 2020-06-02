@@ -37,8 +37,9 @@ trait HasValidation
         $attributeNames = $this->getAttributeNames($customAttributes);
 
         // Validate for default rules
-        // @todo
-        $validator = \Validator::make($data, array_fill_keys(array_keys($data), $this->defaultRules), $messages, $attributeNames);
+        if (!empty($this->defaultRules)) {
+            $validator = \Validator::make($data, array_fill_keys(array_keys($data), $this->defaultRules ?? []), $messages, $attributeNames);
+        }
 
         // Validate for additional rules
         if ($validator->passes() && !empty($additionalRules)) {
