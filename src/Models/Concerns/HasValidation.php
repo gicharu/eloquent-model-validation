@@ -42,12 +42,12 @@ trait HasValidation
         }
 
         // Validate for additional rules
-        if ($validator->passes() && !empty($additionalRules)) {
+        if ((!isset($validator) || $validator->passes()) && !empty($additionalRules)) {
             $validator = \Validator::make($data, $additionalRules, $messages, $attributeNames);
         }
 
         // Validate for additional rules
-        if ($validator->passes() && !empty($modelRules)) {
+        if ((!isset($validator) || $validator->passes()) && !empty($modelRules)) {
             $validator = \Validator::make($data, $modelRules, $messages, $attributeNames);
         }
 
