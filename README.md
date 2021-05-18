@@ -6,7 +6,7 @@ This package provides a trait `\Laragrad\Models\Concerns\HasValidation` for mode
 
 Run command in console
 
-	composer require laragrad/eloquent-model-validation
+	composer require gicharu/eloquent-model-validation
 
 ## Using validation
 
