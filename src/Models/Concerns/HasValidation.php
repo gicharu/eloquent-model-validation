@@ -4,6 +4,7 @@ namespace Laragrad\Models\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
 trait HasValidation
 {
@@ -103,7 +104,7 @@ trait HasValidation
         if (!static::$configAttributeNames) {
 
             $transFile = config('laragrad.models.trans_path', 'model') . '/' .
-                \Str::snake(str_replace('\\', '/', strtolower(get_class($this))));
+                Str::snake(str_replace('\\', '/', strtolower(get_class($this))));
 
             static::$configAttributeNames = trans($transFile . ".attributes");
             if (empty(static::$configAttributeNames) || !is_array(static::$configAttributeNames)) {
