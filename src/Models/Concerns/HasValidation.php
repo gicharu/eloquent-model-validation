@@ -4,6 +4,7 @@ namespace Laragrad\Models\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 trait HasValidation
@@ -39,17 +40,17 @@ trait HasValidation
 
         // Validate for default rules
         if (!empty($this->defaultRules)) {
-            $validator = \Validator::make($data, array_fill_keys(array_keys($data), $this->defaultRules ?? []), $messages, $attributeNames);
+            $validator = Validator::make($data, array_fill_keys(array_keys($data), $this->defaultRules ?? []), $messages, $attributeNames);
         }
 
         // Validate for additional rules
         if ((!isset($validator) || $validator->passes()) && !empty($additionalRules)) {
-            $validator = \Validator::make($data, $additionalRules, $messages, $attributeNames);
+            $validator = Validator::make($data, $additionalRules, $messages, $attributeNames);
         }
 
         // Validate for additional rules
         if ((!isset($validator) || $validator->passes()) && !empty($modelRules)) {
-            $validator = \Validator::make($data, $modelRules, $messages, $attributeNames);
+            $validator = Validator::make($data, $modelRules, $messages, $attributeNames);
         }
 
         if ($validator->fails()) {
