@@ -106,7 +106,7 @@ trait HasValidation
             $transFile = config('laragrad.models.trans_path', 'model') . '/' .
                 Str::snake(str_replace('\\', '/', strtolower(get_class($this))));
 
-            static::$configAttributeNames = trans($transFile . ".attributes");
+            static::$configAttributeNames = [];
             if (empty(static::$configAttributeNames) || !is_array(static::$configAttributeNames)) {
                 static::$configAttributeNames = [];
             }
